@@ -7,36 +7,12 @@
     </h2>
     <div class="row justify-content-center">
         <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            #
-                        </th>
-                        <th scope="col">
-                            Project name
-                        </th>
-                        <th scope="col">
-                            Author
-                        </th>
-                        <th scope="col">
-                            Actions
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($projects as $project)
-                    <tr>
-                        <th scope="row">{{$project->id}}</th>
-                        <td>{{$project->project_name_slug}}</td>
-                        <td>{{$project->creator_name}}</td>
-                        <td>
-
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="card">
+                <div class="card-header h5">Dashboard</div>
+            </div>
+        </div>
+        <div class="col-12">
+            <a href="{{ route('admin.project.index') }}" class="btn btn-primary">Vai ai progetti</a>
         </div>
     </div>
 </div>
