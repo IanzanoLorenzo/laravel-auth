@@ -78,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -90,7 +90,18 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $request->validate([
+            'project_name' => 'required|max:50',
+            'description' => 'required|max:255',
+            'creator_name' => 'required|max:50'
+        ]);
+
+        $form_data = $request->all();
+        $form_data['project_name_slug'] = $project->toSlug($form_data['project_name']);
+
+        $project->update($form_data);
+
+        return redirect()->route('admin.project.show', $project);
     }
 
     /**
