@@ -29,7 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.project.create');
     }
 
     /**
@@ -40,8 +40,24 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $request->validate([
+            'project_name' => 'required|max:50',
+            'description' => 'required|max:255',
+            'creator_name' => 'required|max:50'
+        ]);
+
+        $form_data = $request->all();
+        
+        
+        $project = new Project();
+        $project->fill($form_data);
+        $project->creation_date = date('Y-m-d');
+        $project->project_name_slug = $project->toSlug($form_data['project_name']);
+        $project->save();
+
+        return redirect()->route('admin.project.show', $project);
     }
+
 
     /**
      * Display the specified resource.
@@ -51,7 +67,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        
         return view('admin.project.show', compact('project'));
     }
 

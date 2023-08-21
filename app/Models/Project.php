@@ -9,7 +9,10 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['project_name', 'description', 'creator_name'];
+
     public function toSlug($string){
+        $string = strtolower($string);
         $array = explode(' ', $string);
         return implode('-', $array);
     }
