@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2 class="fs-4 text-secondary text-capitalize my-5">
+            <h2 class="fs-4 text-secondary text-capitalize my-4">
                 Nuovo Progetto
             </h2>
             <div class="card">

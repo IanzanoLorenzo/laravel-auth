@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary text-capitalize my-5">
+    <h2 class="fs-4 text-secondary text-capitalize my-4">
         {{$project->project_name}} 
     </h2>
     <div class="card">

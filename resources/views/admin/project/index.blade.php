@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="fs-4 text-secondary my-5">
+    <h2 class="fs-4 text-secondary my-4">
         Projects
     </h2>
     <div class="row justify-content-center">
@@ -35,8 +35,14 @@
                         <td>{{$project->creator_name}}</td>
                         <td class="text-center">
                             <a href="{{ route('admin.project.show', $project ) }}" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i></a>
-                            <button class="btn btn-warning"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                            <form method="POST" class="d-inline-block" onsubmit="return confirm('Sei sicuro di voler eliminare il progetto?')" action="{{ route('admin.project.destroy', $project) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
