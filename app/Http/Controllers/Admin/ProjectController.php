@@ -90,12 +90,6 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $request->validate([
-            'project_name' => 'required|max:50',
-            'description' => 'required|max:255',
-            'creator_name' => 'required|max:50'
-        ]);
-
         $form_data = $request->all();
         $form_data['project_name_slug'] = $project->toSlug($form_data['project_name']);
 
