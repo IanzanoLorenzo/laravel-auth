@@ -33,8 +33,8 @@ class StoreProjectRequest extends FormRequest
     public function messages()
     {
         return [
-            'project_name.required' => 'Il campo "Nome" è obbligatorio',
-            'project_name.max' => 'Il campo "Nome" non può superare i :max caratteri',
+            'project_name.required' => 'Il campo "Nome Progetto" è obbligatorio',
+            'project_name.max' => 'Il campo "Nome Progetto" non può superare i :max caratteri',
             'description.required' => 'Il campo "Descrizione" è obbligatorio',
             'description.max' => 'Il campo "Descrizione" non può superare i :max caratteri',
             'creator_name.required' => 'Il campo "Autore" è obbligatorio',
