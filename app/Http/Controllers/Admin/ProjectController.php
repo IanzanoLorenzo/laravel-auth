@@ -7,6 +7,8 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     /**
@@ -40,14 +42,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $request->validate([
-            'project_name' => 'required|max:50',
-            'description' => 'required|max:255',
-            'creator_name' => 'required|max:50'
-        ]);
-
         $form_data = $request->all();
-        
+        if($request->hasFile('image')){
+            $path = Storage::put('projects_images', $request['image']);
+
+            $form_data['image'] = $path;
+        }
         
         $project = new Project();
         $project->fill($form_data);
@@ -91,6 +91,15 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
+
+        if($request->hasFile('image')){
+            if($project->image !== null){
+                Storage::delete($project->image);
+            }
+            $path = Storage::put('projects_images', $request['image']);
+            $form_data['image'] = $path;
+        }
+
         $form_data['project_name_slug'] = $project->toSlug($form_data['project_name']);
 
         $project->update($form_data);

@@ -4,11 +4,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2 class="fs-4 text-secondary text-capitalize my-4">
+            <h2 class="fs-4 text-secondary text-capitalize m-4">
                 Nuovo Progetto
             </h2>
+            <div class="text-center">
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-success m-3">Torna alla dashboard</a>
+            </div>
             <div class="card">
-                <form action="{{route('admin.project.store')}}" method="POST">
+                <form action="{{route('admin.project.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group p-3">
                         <label class="control-label">Nome progetto</label>
@@ -31,8 +34,14 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror 
                     </div>
+                    <div class="form-group p-3">
+                        <label class="control-label">Immagine</label>
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image">
+                    </div>
                     <button type="submit" class="btn btn-primary m-3">Crea progetto</button>  
+                    <a href="{{ route('admin.project.index') }}" class="btn btn-primary">Torna alla lista progetti</a>
                 </form>
+
             </div>
         </div>
     </div>

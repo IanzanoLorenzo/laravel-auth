@@ -8,7 +8,7 @@
                 Modifica Progetto
             </h2>
             <div class="card">
-                <form action="{{route('admin.project.update', $project)}}" method="POST">
+                <form action="{{route('admin.project.update', $project)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group p-3">
@@ -32,7 +32,15 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror 
                     </div>
-                    <button type="submit" class="btn btn-primary m-3">Crea progetto</button>  
+                    <div class="form-group p-3">
+                        <label class="control-label">Immagine</label>
+                        <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
+                        @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror 
+                        <img class="m-3" src="{{ asset('storage/'.$project->image) }}" alt="">
+                    </div>
+                    <button type="submit" class="btn btn-primary m-3">Conferma modifiche</button>  
                 </form>
             </div>
         </div>
