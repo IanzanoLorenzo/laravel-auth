@@ -25,7 +25,6 @@ class ProjectSeeder extends Seeder
             $project->description = $faker->text(100);
             $project->creator_name = $person->name();
             $project->creation_date = $faker->dateTimeBetween('-2 year', 'now');
-            $project->image = $faker->imageUrl(100, 100);
             $project->save();
         }
     }

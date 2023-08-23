@@ -27,7 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'project_name' => 'required|max:50',
             'description' => 'required|max:255',
             'creator_name' => 'required|max:50',
-            'image' =>  'image|'
+            'image' =>  'image'
         ];
     }
 
@@ -39,7 +39,8 @@ class UpdateProjectRequest extends FormRequest
             'description.required' => 'Il campo "Descrizione" è obbligatorio',
             'description.max' => 'Il campo "Descrizione" non può superare i :max caratteri',
             'creator_name.required' => 'Il campo "Autore" è obbligatorio',
-            'creator_name.max' => 'Il campo "Autore" non può superare i :max caratteri'
+            'creator_name.max' => 'Il campo "Autore" non può superare i :max caratteri',
+            'image.image' => 'Il file dev\'essere un\'immagine (.jpeg, .png ...)'
         ];
     }
 }
