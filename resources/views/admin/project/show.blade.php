@@ -11,11 +11,13 @@
             <p class="fs-5">
                 {{$project->description}}
             </p>
+            <img src="{{ asset('storage/'.$project->image) ?? ''}}" alt="immagine non trovata">
             <p class="fs-6">
                 {{$project->creation_date}}
             </p>
+            <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-success my-3">Modifica il Progetto</a>
+            <a href="{{ route('admin.project.index') }}" class="btn btn-primary">Torna alla lista progetti</a>
         </div>
-
     </div>
 </div>
 @endsection
